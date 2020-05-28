@@ -40,7 +40,7 @@ class OpenGraph{
         $this->locale = str_replace('-','_',Yii::$app->language);
         $this->image = null;
 
-        Yii::$app->view->on(View::EVENT_BEGIN_PAGE, [$this, 'addTags']);
+        Yii::$app->getView()->on(View::EVENT_BEGIN_PAGE, [$this, 'addTags']);
     }
 
     /**
@@ -48,35 +48,35 @@ class OpenGraph{
      */
     public function addTags()
     {
-        Yii::$app->controller->view->registerMetaTag([
+        Yii::$app->controller->getView()->registerMetaTag([
             'property'=>'og:title',
             'content'=>$this->title
         ], 'og:title');
-        Yii::$app->controller->view->registerMetaTag([
+        Yii::$app->controller->getView()->registerMetaTag([
             'property'=>'og:site_name',
             'content'=>$this->siteName
         ], 'og:site_name');
-        Yii::$app->controller->view->registerMetaTag([
+        Yii::$app->controller->getView()->registerMetaTag([
             'property'=>'og:url',
             'content'=>$this->url
         ], 'og:url');
-        Yii::$app->controller->view->registerMetaTag([
+        Yii::$app->controller->getView()->registerMetaTag([
             'property'=>'og:type',
             'content'=>$this->type
         ], 'og:type');
 
-        Yii::$app->controller->view->registerMetaTag([
+        Yii::$app->controller->getView()->registerMetaTag([
             'property'=>'og:locale',
             'content'=>$this->locale
         ], 'og:locale');
         if($this->description!==null){
-            Yii::$app->controller->view->registerMetaTag([
+            Yii::$app->controller->getView()->registerMetaTag([
                 'property'=>'og:description',
                 'content'=>$this->description
             ], 'og:description');
         }
         if($this->image!==null){
-            Yii::$app->controller->view->registerMetaTag([
+            Yii::$app->controller->getView()->registerMetaTag([
                 'property'=>'og:image',
                 'content'=>$this->image
             ], 'og:image');
