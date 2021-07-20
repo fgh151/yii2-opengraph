@@ -40,7 +40,7 @@ class OpenGraph{
         $this->locale = str_replace('-','_',Yii::$app->language);
         $this->image = null;
 
-        Yii::$app->getView()->on(View::EVENT_BEGIN_PAGE, [$this, 'addTags']);
+        Yii::$app->getView()->on(View::EVENT_BEFORE_RENDER, [$this, 'addTags']);
     }
 
     /**
